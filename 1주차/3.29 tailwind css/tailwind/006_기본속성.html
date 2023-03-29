@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- https://tailwindcss.com/docs/margin -->
+    <!-- https://tailwindcss.com/docs/padding -->
+    <!-- https://tailwindcss.com/docs/font-weight -->
+    <!-- https://tailwindcss.com/docs/text-color -->
+    <div class="text-base">hello world</div>
+    <div class="text-lg">hello world</div>
+    <div class="text-2xl">hello world</div>
+    <div class="text-5xl p-3 bg-red-200 mb-3">hello world</div>
+    <div class="text-5xl pt-3 bg-red-200">hello world</div>
+    <br>
+    <br>
+       <!-- my-3에서 y는 위, 아래 -->
+    <!-- mx-3에서 x는 왼쪽, 오른쪽 -->
+    <div class="text-base">hello world</div>
+    <div class="text-base my-3">hello world</div>
+    <div class="text-base">hello world</div>
+
+    <!-- https://tailwindcss.com/docs/list-style-type -->
+    <div class="p-5">
+        <ul class="list-disc">
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+        </ul>
+    </div>
+        <!-- p-5이 없으면 리스트 동그라미가 없어진것처럼보이지만 사실 안보이는것뿐,밖에나가잇음..그래서 p-5가 필요 -->
+    <div class="p-5">
+        <ul class="list-disc list-inside">
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+        </ul>
+    </div>
+
+    <div class="p-5">
+        <ul class="list-decimal">
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+            <li>hello world</li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="w-32 h-32 bg-blue-300 mb-3"></div>
+    <div class="w-32 h-32 bg-blue-300 mb-3 rounded"></div>
+    <div class="w-32 h-32 bg-blue-300 mb-3 rounded-2xl"></div>
+    <div class="w-32 h-32 bg-blue-300 mb-3 rounded-full"></div>
+
+    <br>
+    <br>
+
+    <div class="border mb-3">Hello World</div>
+    <div class="border border-red-200 mb-3">Hello World</div>
+    <div class="border-r-4 border-red-300 mb-3">Hello World</div>
+    <div class="border-l-4 border-red-300 mb-3">Hello World</div>
+    <div class="border-t-2 border-red-300 mb-3">Hello World</div>
+    <div class="border-b-2 border-red-300 mb-3">Hello World</div>
+    <br>
+    <br>
+    
+    <div class="text-[17px]">hello World</div>
+    <div class="mt-[17px]">hello World</div>
+    <div class="bg-[#ff0000]">hello World</div>
+</body>
+</html>
