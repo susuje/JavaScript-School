@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //산술연산, 논리연산, 비교연산
+        const x = true; // 1
+        const y = false; // 0
+        const z = 10;
+
+        //and는 둘중에 하나라도 false라면 false가 됩니다. 둘다 true여야 true
+        console.log(x && y); // and(곱)
+
+        //or는 둘중 하나라도 true라면 true. 둘다 false여야 false!
+        console.log(x || y); // or(합)
+
+        console.log(!x);//false
+        console.log(!!z); //true 뜸. true인지 보려고
+
+
+        // 중요하진 않아요.
+        // console.log(3 & 5); 1이뜹니다.
+        //2진수어저구...
+        // console.log(x | y);
+
+        //비트연산자 중에서 유일하게 중요한 연산(부정연산)
+        //console.log(~3)   -4가나옴. 3에+1하고마이너스를 붙임.
+        //console.log(~~3) 3이나옴. 부정의부정은 소수점을 제거할수잇다. paresInt ()
+        //console.log(~~3.24) --> 3반환
+    </script>
+</body>
+</html>

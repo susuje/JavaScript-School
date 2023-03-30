@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let txt = 'hello'
+
+        console.log(txt + txt)
+        console.log(txt[0]) //Sass 1부터 시작
+        console.log(txt[2])
+        console.log(txt.length)
+        console.log(txt.indexOf('h')) // 0
+        console.log(txt.search('h')) //0
+        console.log(txt.search('o')) //4
+
+        console.log(txt.indexOf('i')) //없는 값은 -1
+        console.log(txt.search('i'))//없는 값은 -1
+
+        let regExp = /he/;  // he 패턴찾으셈
+        console.log(txt.search(regExp)) // 0
+
+        //정규표현식
+        //010[ -.][0-9]+[ -.][0-9]+
+        //https://regexr.com/5nvc2 
+
+        console.log(txt.replace('he', 'hi')) //hillo 로 됨.
+
+
+        //txt2 에서 대문자를 찾아내고싶어!
+        let txt2 = 'abcdeHelloabcde'
+        let regExp2 = /[A-Z]/g;
+        console.log(txt2.search(regExp2)) 
+
+        //txt2 에서 대문자를 소문자로바꿀겡!
+        let txt3 = 'abcdeHelloabcde'
+        let regExp3 = /[A-Z]/g;
+        console.log(txt2.replace(regExp2, 'h')) 
+        </script>
+</body>
+</html>
