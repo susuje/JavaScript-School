@@ -1,0 +1,110 @@
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+body, h1, h2, p, ul{
+    margin:0;
+    padding: 0;
+}
+
+
+.bg_beige {
+    background: #F2E9D8;
+}
+
+.l_wrapper {
+    min-width: 1080px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+/* 버튼 */
+.btn {
+    display: inline-block;
+    background: #D97652;
+    border-radius: 40px;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 15px 29px;
+}
+
+/* 베이지 배경---------------------------------------*/
+header{
+    padding: 26px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.menu {
+    display: flex;
+    align-items: center;
+}
+.link {
+    display: flex;
+    
+}
+
+.link li {
+    list-style: none;
+    margin-right: 30px;
+}
+.link li:last-child {
+    margin-right: 40px;
+}
+header img {
+    width: 130px;
+}
+  /* 박스 고양이*/
+.bg_beige h2 {
+    font-size: 48px;
+    margin-top: 200px;
+}
+
+.bg_beige p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.box_cat {
+    display: flex;
+    justify-content: space-between;
+}
+.box_cat_text {
+    margin-right: 128px;
+}
+.box_cat img {
+    margin-top: 30px;
+}
+
+/* center_cat */
+.center_cat{
+    display: flex;
+    margin-top: 80px;
+    align-items: center;
+}
+
+.center_cat img{
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.278) 10px 10px 15px;
+    margin-right: 110px;
+}
+
+.center_cat_text h2{
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+
+/* three_cat */
+.three_cat {
+    margin-top: 120px;
+}
+.three_cat_title {
+    text-align: center;
+}
+
+.three_cat_title h2 {
+    font-size: 48px;
+    color: #D97652;
+    margin-bottom: 40px;
+}
+
+.three_cat_title p {
+    font-size: 16px;
+}
