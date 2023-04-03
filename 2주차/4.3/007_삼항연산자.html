@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3항 연산자
+        // https://ko.javascript.info/ 
+        // 조건식 ? 참일 경우 실행되는 표현식 : 거짓일 경우 실행되는 표현식
+
+        // const sale = true;
+        // const price = sale ? 100 : 200;  //true 면 100 이 price로 들어감. false면 200 이 price로 들어감
+        // console.log(price)  //100
+
+        // const price = 7000 // 이 값에 따라 비싸요/저렴해용 으로 나뉩니다
+        // const message = price >= 5000 ? '비싸요' : '저렴해용'
+        // console.log(message) // 비싸요
+
+        //9000원 이상이면 비싸다
+        //9000원 미만이고 7000원 이상이면 적절하다
+        //7000원 미만이면 저렴하다
+        const price = 7500 
+        const message = (price >= 9000) ? '비싸다' : ((price >= 7000) ? '적절해요' : '저렴해요')
+        console.log(message) // 
+
+    </script>
+</body>
+</html>
