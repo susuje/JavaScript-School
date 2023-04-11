@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute 메소드</title>
+</head>
+<body>
+    
+    <p id='myTxt'>hello lions</p>
+    <img src='https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg'>
+
+
+
+<script>
+    
+
+    
+ // 속성에 접근하고 수정할 수 있는 Attribute 메소드
+//  1. getAttribute 메소드는 요소의 특정 속성 값에 접근할 수 있도록 합니다.
+//  2. setAttribute 메소드는 요소의 특정 속성 값에 접근하여 값을 수정합니다.
+
+	const target = document.querySelector('p');
+	const myimg = document.querySelector('img');
+	const idAttr = target.getAttribute('id');    //id속성의 값이  뭔지 알고싶어요 
+	console.log(idAttr); // #myTxt
+
+	myimg.setAttribute("src", "https://img.wendybook.com/image_detail/img159/159599_01.jpg"); //사진이 뽀로로에서 헤이더그로 바뀝니다
+</script>
+
+
+</body>
+</html>

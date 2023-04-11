@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <article class="palette">
+        <h1>🎨 Color Change</h1>
+        <div class="canvas"></div>
+        <div class="buttons">
+            <button data-color="red" class="btn-red">빨강</button>
+            <button data-color="yellow" class="btn-yellow">노랑</button>
+            <button data-color="green" class="btn-green">초록</button>
+        </div>
+    </article>
+    
+    <script>
+        const canvas = document.querySelector('.canvas');
+        const btn = document.querySelectorAll('.buttons')
+    
+        btn.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                canvas.className = 'canvas';
+                const color = e.target.dataset.color;
+                if (e.target.tagName !== 'BUTTON') return;
+                    canvas.classList.add(color)
+                }
+            )
+        });
+        
+    </script>
+</body>
+</html>

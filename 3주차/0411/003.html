@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innertext</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- innertext 예제-->
+    <ul>
+        <li>
+            <figure>
+                <img src="" alt="고양이">
+                <figcaption>
+                    상품 가격 : 39,990원 <span class="hidden">(주의) VIP만 받을수있는 혜택입니다.</span>
+                </figcaption>
+            </figure>
+        </li>
+    </ul>
+
+
+
+
+    <script>
+        //우리가원하는건 상품가격
+        const info = document.querySelector('figcaption');
+        console.log(info.textContent); // 상품 가격 : 39,990원 (주의) VIP만 받을수있는 혜택입니다.
+        console.log(info.innerText);  // 상품 가격 : 39,990원
+        console.log(info.innerHTML) // 상품 가격 : 39,990원 <span class="hidden">(주의) VIP만 받을수있는 혜택입니다.</span>
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data</title>
+</head>
+<body>
+    
+    <img
+    class="terran battle-cruiser"
+    src="battle-cruiser.png"
+    data-ship-id="324"
+    data-weapons="laser"
+    data-health="400"
+    data-mana="250"
+    data-skill="yamato-cannon"/>
+
+
+<script>
+    //1. 요소에 데이터를 저장하도록 도와주는 data 속성
+    
+    // data-* 속성을 사용하면 HTML 요소에 추가적인 정보를 저장하여 마치 프로그램 가능한 객체처럼 사용할 수 있게 합니다. 
+    // 단,  data 속성의 이름에는 콜론(:) 이나 영문 대문자가 들어가서는 안됩니다.
+
+    const target = document.querySelector('img');
+    console.log(target.dataset); //data 속성을 객체값으로 가져옴니다.
+	console.log(target.dataset.shipId); //324 //대쉬제거해도됩니다 그대신 카멜케이스로 대문자로
+</script>
+
+
+</body>
+</html>
