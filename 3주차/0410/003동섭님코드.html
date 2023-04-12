@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+      .box {
+        margin: auto;
+        width: 500px;
+        height: 500px;
+        background-color: black;
+      }
+      .box-container{
+        text-align: center;
+      }
+      .red {
+        background-color: red;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .green {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box-container">
+      <button class="btn red">빨강</button>
+      <button class="btn yellow">노랑</button>
+      <button class="btn green">초록</button>
+    </div> 
+    <script>
+      const box = document.querySelector('.box')
+      const btn = document.querySelectorAll('.btn')
+    //   btn은 노드리스트. 유사배열객체라서 forEach사용가넝
+      btn.forEach(x=>{
+        console.log('work') //e는 선택된 버튼을 의미합니다..!
+        x.addEventListener('click', e=>{
+          box.classList.remove('red')
+          box.classList.remove('green')
+          box.classList.remove('yellow')
+          if(e.currentTarget.classList.contains('red')){
+            box.classList.add('red')
+          } else if (e.currentTarget.classList.contains('yellow')) {
+            box.classList.add('yellow')
+          } else {
+          box.classList.add('green')
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

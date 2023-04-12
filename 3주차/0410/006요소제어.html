@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <ul></ul>
+    <button>Make me MORE!</button>
+    
+    <script>
+        const myBtn = document.querySelector("button");
+        const myUl = document.querySelector("ul");
+
+        // myBtn.addEventListener('click', function(){
+        //     for(let i=0; i < 5; i++){
+        //         const myLi = document.createElement('li');
+        //         const myText = document.createTextNode(i);
+        //         myLi.appendChild(myText); // li에 자식요소로 숫자i를 넣어줍니다
+        //         myUl.appendChild(myLi);  // ul태그에 li를 자식으로 넣어줍니다.
+        //     }
+        // }) //li가 다섯번 생성되고 ul의 자식으로 들어갑니다
+
+
+        ///이거 다시 보기
+        myBtn.addEventListener('click', function(){
+            for(let i=0; i < 5; i++){
+                const myLi = document.createElement('li');
+                const btnDel = document.createElement('button');
+            const btnTxt = document.createTextNode = '삭제';
+
+            btnDel.append(btnTxt);
+                btnDel.addEventListener('click', ()=>{
+                    myLi.remove();
+                });
+                myLi.append('삭제하기: ', btnDel);
+                myUl.appendChild(myLi);
+            }
+        });
+    </script>
+</body>
+</html>

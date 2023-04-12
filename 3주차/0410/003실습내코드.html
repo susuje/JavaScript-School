@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        ul {
+            display: flex;  
+        }
+        li {
+            margin-left: 40px;
+        }
+        .square {
+            width: 400px;
+            height: 400px;
+            background-color: black;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="square"></div>
+    <ul>
+        <li><button type="button" class="btn-red">빨강</button></li>
+        <li><button type="button" class="btn-yellow">노랑</button></li>
+        <li><button type="button" class="btn-green">초록</button></li>
+    </ul>
+
+    <script>
+        const square = document.querySelector('.square');
+        const red = document.querySelector('.btn-red');
+        const yellow = document.querySelector('.btn-yellow');
+        const green = document.querySelector('.btn-green');
+
+        red.addEventListener('click', function(){
+            square.classList.remove('yellow');
+            square.classList.remove('green');
+            square.classList.add('red');
+            
+        })
+
+        yellow.addEventListener('click', function(){
+            square.classList.remove('red');
+            square.classList.remove('green');
+            square.classList.add('yellow');
+        })
+
+        green.addEventListener('click', function(){
+            square.classList.remove('red');
+            square.classList.remove('yellow');
+            square.classList.add('green');
+        })
+    </script>
+</body>
+</html>

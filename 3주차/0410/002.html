@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>HELLO!</button>
+
+
+    <script>
+        //이벤트삽입
+        const myBtn = document.querySelector("button");
+
+        myBtn.addEventListener('click', function(){
+            console.log("hello world"); //콜백함수입니다. 리슨함수라고도 불립니다.
+        })
+
+        //클래스 제어 
+        //classList 객체를 통해 class속성을 제어할수있습니다.
+        myBtn.addEventListener('click', function(){
+            myBtn.classList.add("blue");  //// blue 클래스를 myBtn 에 붙일수잇습니다.
+        })
+            // myBtn.classList.remove("blue");     클래스를 제거합니다.
+            // myBtn.classList.toggle("blue");     클래스를 토글합니다. 없으면 넣어주고, 있으면 제거합니다.
+            // console.log(myBtn.classList.contains("blue"));   해당하는 클래스가 있는지 확인합니다. 중요해요!
+    </script>
+</body>
+</html>
