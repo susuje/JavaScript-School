@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <article class="parent">
+        <ol>
+            <li><button class="btn-first" type="button">버튼1</button></li>
+            <li><button type="button">버튼2</button></li>
+            <li><button type="button">버튼3</button></li>
+        </ol>
+    </article>
+    
+    <script>
+        //이벤트 리스너 함수 내부에서의 this 값은 이벤트가 연결된 노드를 참조합니다.
+        //이는 event.currentTarget 속성의 참조값과 유사합니다. 
+        //만약 이벤트 리스너 함수를 화살표 함수로 쓴다면 this 가 가리키는 대상이 달라진다는 점에 유의하세요.
+        const parent = document.querySelector('.parent');
+        parent.addEventListener('click', function (event) {
+            console.log(this);//버튼을누르면 parent가 찍힘.
+            console.log(event.currentTarget); //parent
+            console.log(event.target) //내가직접누른거
+        })
+        //화살표함수일경우 상위스코프!
+        parent.addEventListener('click',  (event) => {
+            console.log(this);//window //자기를감싸는 함수에서 벗어나면 전역공간이라서 상위스코프인 window를 가리킴
+            console.log(event.currentTarget); //parent
+        })
+
+
+
+        //예시 //화살표함수
+
+        const btnFirst = document.querySelector('.btn-first');
+        const myObj = {
+            nameObj : 'testObj',
+            test(){
+                btnFirst.addEventListener('click',()=>{
+                    console.log(this);
+                })
+            }
+        }
+        myObj.test();// myObj 바로위객체myObj가있으니까! //console.log(this.nameObj)이면 testObj가 찍힘 
+
+        // 그냥 함수일때
+        const myObj = {
+            nameObj : 'testObj',
+            test(){
+                btnFirst.addEventListener('click',function(){
+                    console.log(this); //그냥 function일경우에는 this는 btnFirst
+                })
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

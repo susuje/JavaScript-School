@@ -1,0 +1,38 @@
+#app {
+    height: 100vh;
+    width: 100vw;
+    perspective: 1600px;
+}
+
+.list-item {
+    position: fixed; 
+    /* 항상 화면 가운데에 잇다 */
+    width: 340px;
+    height: 400px;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotateX(0deg);
+    transform-style: preserve-3d;
+}
+
+.list-item li {
+    position: absolute; 
+    /* 부모를 기준으로 하려구 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    border:1px solid #BDBDBD;
+    border-radius: 10px;
+    list-style: none;
+}
+
+.list-item li:nth-child(1){
+
+}
+
+.list-item img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}

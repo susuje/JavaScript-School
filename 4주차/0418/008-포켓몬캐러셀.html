@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <article id="app">
+        <h2>포켓몬 케러셀</h2>
+        <ul class="list-item">
+            <!-- <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png" alt=""></li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/ev.png?raw=true" alt="">
+            </li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/mazayoung.png?raw=true" alt="">
+            </li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/mobugi.png" alt=""></li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/nyaong.png" alt=""></li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/pulin.png" alt=""></li>
+            <li><img src="https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/weirdseed.png" alt=""></li> -->
+        </ul>
+    </article>
+
+    <script>
+        //이런식으로 데이터를 받아온다.
+        const arrPic =[
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
+        "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png"
+        ];
+
+        arrPic.forEach((item)=>{
+            const elLi= document.createElement('li');
+            elLi.innerHTML= `<img src="${item}" alt="">`;
+            center.appendChild(elLi);
+        })
+        /////////////////////////////
+        ////offsetWidth 너비값을 알수잇다.
+        ///
+        const center = document.querySelector('.list-item');
+        const items = document.querySelectorAll('.list-item li');
+        const angle = 360 / items.length;
+        let currAngle = 0;
+        //window.innerWidth 사용자가보고있는전체넓이값 뷰포트를기준//event.clientX클릭한부분 // 큰거니까 오른쪽을누르게된다면
+        document.addEventListener('click', function(event){
+            if(window.innerWidth/2<event.clientX){ //sreenX도 동작하는데 차이는 무엇일까?->사용자가 사용하고있는 모든 모니터의수평을기준으로바뀐다.만약 모니터2개를이용하는 사람이 사용하게되면 screenX로했을시 제대로작동하지않는다.
+                currAngle = currAngle+angle
+
+                //화면왼쪽누를경우
+            }else{
+                currAngle -= angle;
+            }
+            center.style.transform = `translate(-50%, -50%) rotateY(${currAngle}deg);`
+        })
+
+        //css 썜 변수로 넣어줌.참고하기
+    </script>
+</body>
+
+</html>

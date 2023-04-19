@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <button type="submit" class="submit">제출</button>
+    </form>
+    
+    <script>
+        const submit = document.querySelector('.submit');
+        submit.addEventListener('click', (event) => {
+            console.log('clicked');
+            event.preventDefault();
+             event.stopPropagation(); //버블링만 막죠. 캡처링은 얘한테도달하기전에 이미실행됐으니까.
+              //이코드가없었다면 submit누르면 body의 이벤트가 실행됩니다.
+             //하지만   event.stopPropagation();로 인해  body의 이벤트가 실행되지않아요
+             //만약 body의 이벤트가 캡처링이라면 실행이됩니다.
+        });
+        
+        //body태그는 쿼리셀렉터같은거 필요없이 바로 body로 접근가넝
+        document.body.addEventListener('click', () => { 
+            console.log('event still alive!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+    <style>
+        #calendar {
+            display: inline-block;
+            padding: 20px;
+            background: #333;
+            text-align: center;
+            color: #fff;
+        }
+
+        #calendar table {
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 25px;
+            color: orange;
+            margin: 10px;
+        }
+
+        th,
+        td {
+            padding: 20px;
+            border: 1px solid #666;
+        }
+
+        th:first-child,
+        td:first-child {
+            color: red;
+        }
+
+        .prev,
+        .next {
+            color: inherit;
+            padding: 10px;
+            margin: 5px;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <article id="calendar">
+        <h2>나의 멋진 HTML 달력</h2>
+        <table>
+            <caption>
+                <time datetime="">
+                    <span class="year"></span>년
+                    <span class="month"></span>월
+                </time>
+            </caption>
+            <tr>
+                <th scope="col">일</th>
+                <th scope="col">월</th>
+                <th scope="col">화</th>
+                <th scope="col">수</th>
+                <th scope="col">목</th>
+                <th scope="col">금</th>
+                <th scope="col">토</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <button type="button" class="prev">이전달</button>
+        <button type="button" class="next">다음달</button>
+    </article>
+
+    <script>
+        function calendar(newYear, newMonth){
+            //1. 무슨 요일에 시작하는지 알아야 한다!
+            const time = new Date(newYear,newMonth-1,1); //년,달(인덱스이므로-1),일 
+            //console.log(time); //
+
+            //2. 해당 월에 날이 며칠이나 있는지?
+            const timeLength = new Date(newYear, newMonth, 0).getDate(); //0을넣으면 이전달 마지막날
+            //console.log(timeLength)
+            
+            let year = time.getFullYear(),
+                month = time.getMonth(),
+                date = time.getDate(),
+                day = time.getDay();
+            
+            const captionYear = document.querySelector('.year'),
+                captionMonth = docment.querySelector('.month'),
+                timeEl = document.querySelector('time'),
+                days = document.querySelectorAll('tr td');  //tr 안에 td
+            
+            
+            for(let i=0;i<days.length;i++){
+                days[i].innerHTML='&nbsp;';
+            }
+            for(let i=day; i<day+timeLength;i++){
+                days[i].textContent = date++;
+            }
+
+            captionYear.textContent = year;
+            captionMonth.textContent = month + 1;
+            timeEl.dateTime = `${year}-${month+1}`;
+        }
+
+        const btns = document.querySelectorAll('button');
+        btns.forEach((item)=> {
+            item.addEventListener('click',()=>{
+                if(item.classList.contains('prev')){
+                    calendar(year, --month);
+                } else{
+                    calendar(year,++month); //++앞이면 바로할당되는거였나?
+                    //이 부분에서 해가 바뀌면 알아서 year가 변하는 거
+                }
+            });
+        });
+
+        let year = new Date().getFullYear();
+        let month = new Date().getMonth() + 1; 
+        //화면에 초기 화면을 뿌려주기 위해 만들어둔 변수
+        
+        //let 이 밑에잇어도 저 위에forEach는 실행이됩니다. 그 이유는...캘린더 함수가 실행되기전에 클릭이벤트가  실행되지않아서
+        //함수안에잇는 데이터는 함수가실행될때중요한거임.함수가 실행되기전에는 자바스크립트엔진은 함수 안에 뭐가있는지 신경별로안씀
+        //앗 함수가잇네? 일단 함수 메모리에 저장. 일단 넘어감. 그래서 let year을 인식하기때문에 함수 안에 선언해도 ㄱㅊ
+        calendar(year, month); // 실행시키면 날짜를 넣게끔
+
+    </script>
+</body>
+</html>
