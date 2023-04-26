@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        class UserStorage {
+            //유저가 등록되었는지 확인
+            searchUser(userName, password, onSuccess,onError) { //유저가입력할거에요.
+                const xhr = new XMLHttpRequest(); //비동기
+                xhr.open('GET', 'users.json');
+                xhr.onreadystatechange = () => {  //서버로부터응답이왔따@
+                    if (xhr.readyState === 4 && xhr.status === 200) { //오류가없으면 이제 서버와통신이무사히다긑남.
+                        //if문 안에 공간은 서버와의통신이 완전히 잘된거.
+                        //이곳만 받아온데이터를후속처리하는공간
+                         //JSON.parse하면 JSON갹채를 자바스크립트용 객체로 바꿈
+                        //console.log(result); users가져옴          
+                        //xhr.responseText는 서버에서가져온 user.json 데이터,텍스트로됨
+                        const result = JSON.parse(xhr.responseText).user.find((item)=>{ //첫번째요소를반환
+                            return item.userName === userName && item.password === password
+                        });
+                        if(result){ //result를 받아왔는데 있으면 onSuecces실행
+                            onSuccess(userName);
+                        }else{ //업스면 Error
+                            onError(new Error('user not found')); //생성자함수
+                        }
+                    }
+                }
+
+                xhr.send();
+            }
+            //등록된 유저에 따른 인사말을 출력 //greetings.json과 소통해야함.
+            sayHi(user,onSuccess,onError) {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'greetings.json');
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        //console.log(xhr.responseText); greetings에 접근해야 그안에값을찾음
+                        const result = JSON.parse(xhr.responseText).greetings.find((item) => {
+                            return item.userName === user
+                        });
+
+                        if (result) {
+                            onSuccess(
+                                { //객체를생성합니다.
+                                    name: result.userName,
+                                    greetings: result.greetings
+                                }
+                            );
+                        } else {
+                            onError(new Error('user not found'));
+                        }
+                    }
+                }
+
+                xhr.send();
+            }
+        }
+
+        const userStorage = new UserStorage();
+
+        const userName = prompt('이름을 입력하세요');
+        const password = prompt('비밀번호를 입력하세요');
+        //userStorage.searchUser();
+        userStorage.searchUser(
+            userName,
+            password,
+            (name) => { //onSuccess(userName); 이 userName이 name임
+                userStorage.sayHi(
+                    name,
+                    (result) => {
+                        alert(`당신에게 인사합니다~ ${result.name}님 ${result.greetings}`)
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                )
+            },
+            (error)  => {
+                        console.log(error);
+                    }
+        ); 
+        
+        
+        //userStorage.sayHi('jaehyun'); //
+    </script>
+</body>
+
+</html>

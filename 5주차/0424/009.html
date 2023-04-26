@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello Lions!</p>
+    <button type="button">통신버튼</button>
+
+    <script>
+        const btn = document.querySelector('button');
+
+
+        btn.addEventListener('click', xhrRequest)
+
+        function xhrRequest(){ //비동기통신
+            //일단 인스턴스 만들어야함
+            const xhr = new XMLHttpRequest(); //통신객체 만들어짐
+            //그다음 요청의 초기화가 이루어져야합니다.
+            xhr.open('GET','message.txt'); //초기셋팅. 완.
+            xhr.onreadystatechange=()=> { //'200' 이면 오류듬.
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                     //클랑이어트 상태               서버상태
+                    
+                    const result = xhr.responseText; //데이타를 텍스트형태로 받아옴.
+                    //console.log(result)//
+                    document.querySelector('p').textContent = result;
+            } //이게 좀 나중에 실행이됨.콘솔찍으면 이게 나중에찍힘. 즉,비동기적이다
+
+        }
+        xhr.send();
+    }   
+
+    //console.log(result)
+    </script>
+
+
+
+<!-- JSON.parse하면 JSON갹채를 자바스크립트용 객체로 바꿈 -->
+<!-- json에서는 key문자열일때 완전 쌍따옴표로 꼭! -->
+</body>
+</html>

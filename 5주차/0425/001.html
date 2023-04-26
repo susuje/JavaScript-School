@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        //서버가 나에게 데이터를 준다는게 일단 약속(프로미스)
+        //프로미스는 3가지상태를가집니다 //pending => fulfilled or rejected //동시에존재불가능
+        //pending(약속이 이루어지기전, 대기중), fulfilled(약속완수), rejected(약속이행안댐)// 커피를 주문하는 프로미스 객체를 생성합니다. 생성자에는 약속을 지키기 위한 resolve와, 약속을 지키지 못했을 때를 대비한 reject 두 가지를 인자로 전달합니다.
+
+
+        // 커피를 주문하는 프로미스 객체를 생성합니다. 생성자에는 약속을 지키기 위한 resolve와, 약속을 지키지 못했을 때를 대비한 reject 두 가지를 인자로 전달합니다. //resolve는 함수입니다.
+        const orderCoffee = new Promise((resolve, reject) => {
+
+        const requestObj = new XMLHttpRequest();
+        requestObj.open('GET', 'orderCoffee.txt');
+        requestObj.onreadystatechange = () => {
+            if (requestObj.readyState === 4 && requestObj.status === 200) {
+
+                const result = requestObj.responseText;
+
+                // resolve 메소드가 실행되면 then 메소드가 자동으로 호출됩니다.
+                resolve(result); //fulfill을 불러오는메소드 resolve
+
+                // resolve 메소드 호출이 없는 상태에서 reject 메소드가 실행되거나 통신에 문제가 발생하면 catch 메소드가 자동으로 호출됩니다.
+                // reject(result); 위에 resolve가 활성화되어잇으므로 reject는 활성화되면안되죠
+            }
+        };
+        requestObj.send();
+
+        });
+
+        // 이 부분에 주목해주세요. then 메소드를 사용하면 비동기 코드를 마치 동기적인 코드처럼 작성할 수 있습니다. 앞에서 작성한 XHR 코드와 비교해보는것도 좋습니다. 
+
+        // resolve 메소드가 실행될때 전달된 인자는 then 메소드의 콜백함수의 인자로 전달됩니다.
+        //then은 서버로부터 무사히 데이터를 받아온후, 그 데이터로 무언가 할때!
+        //resolve가 실행되어야 then이 됨.!!!!!!!!
+        orderCoffee.then((asyncResult) => { //then은 약속이 실행됐고 그다음에 이걸할거다!
+            // asyncResult는 위에 result
+            //const result = requestObj.responseText; 
+            console.log(asyncResult); //손님~~주문하신커피 나왔슴니다!ㅔ
+            console.log('약속이 이루어졌습니다.');
+            return asyncResult; 
+        }).catch((error) => { // then 메소드는 프라미스 객체를 반환하기 때문에 catch 메소드를 이어서 쓰는것이 가능합니다.
+            //result가 error안으로 들어갑니다.
+        console.log(new Error('커피주문이 정상적으로 이뤄지지 않았습니다.'));
+        })
+        //catch는 reject가 실행되야 됩니다.
+    </script>
+</body>
+</html>

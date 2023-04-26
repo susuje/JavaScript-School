@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent"></div>
+
+<script>
+    const parent = document.querySelector('#parent');
+    const txt = document.createElement('p');
+
+    txt.textContent = '문자입니다!';
+    const frag = document.createDocumentFragment(); //frag 안에 미니 Dom이 만들어짐.
+    frag.append(txt);
+
+
+    parent.append(frag);  //frag는 html에 없구 자기 자식들만 parent에 child 가됨.
+    //<div>
+    //  <p></p>
+    // </div>
+
+</script>
+</body>
+</html>

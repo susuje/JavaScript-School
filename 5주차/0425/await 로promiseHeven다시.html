@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 쌤코드다시보셈! -->
+    <script>
+ class UserStorage{
+    async searchUser(userName, password) {
+        //await는 프로미스 객체가 반환될때까지 다음코드의 동작을 중지하고 프로미스 객체의 fulfilled값을 반환합니다.
+        return await new Promise((resolve, reject) => {
+            fetch('users.json')
+                .then((data) => {  //data는 response
+                    if(data.ok){
+                        return data.json()
+                    }else{
+                        console.log(new Error('네트워크 응답에 문제가 발생하였다.'))
+                    }
+                    
+                })
+                .then((response) => {
+                    const result = response.user.find((item) => {
+                        return item.userName === userName && item.password === password
+                    });
+
+                    if (result) {
+                        resolve(userName);
+                        //await로 인해 userName이 반환됩니다. 더이상 프로미스로 반ㅇ환하지않고 값으로반환합니다.
+                    } else {
+                        reject('user not found');
+                    }
+                })
+        })
+        }
+ }
+
+ class 
+ async sayHi(user) {
+
+return await new Promise((resolve, reject) => {
+
+    fetch('greetings.json')
+        .then((data) => {
+            return data.json();
+        }).then((response) => {
+            const result = response.greetings.find((item) => {
+                return item.userName === user
+            });
+
+            if (result) {
+                resolve(
+                    {
+                        name: result.userName,
+                        greetings: result.greetings
+                    }
+                );
+            } else {
+                reject('no greetings');
+            }
+        })
+})
+}
+
+//즉 await는 fulfiiled 값을 바로 반환함. await 쓰기전에는 원래 promise로 반환했죠 즉 프로미스가아니여서 then을 못씀.
+//const user 는 userName인듯..
+//sayHi함수는 결과적으로 if(result) resolve의 결과 객체를 반환함.
+userStorage.sayHi(user)
+
+//searc유저랑 세이하이 둘다 async함수임. 즉 서치유저를 실행시켰을때 다음코드가있으면 서치유저가 다 될때까지 기다리지않고 동기적으로 실행시킴. 즉, user밑 바로 result를 실행시킴 result도 마찬가지 . 바로뒤 alert를 실행시킴 그래서 await를 붙인다..인듯. 
+//그래서 즉시실행함수,,,안에 넣어....글고 async로 그 함수를 만들어...
+
+
+
+
+//  즉시함수안에넣으면
+//  서치유저가 끝날때까지 기다리고 세이하이가 끝날때까지 기다리고 그다음 alert이 떠서 undefined가 아닌 우리가원한값이잘뜬다구하셨는데
+//  여기까진 이해했는데
+//   왜 즉시함수에 넣었는지 잘 이해가안됩니다ㅠㅠ
+
+
+// 강사님 아까 즉시함수안에넣으면
+//  서치유저, 세이하이가 끝날때까지 기다리고 그다음 alert이 떠서 undefined가 아닌 우리가 원한값이 잘뜬다구하셨는데
+//  여기까진 이해했는데
+//   왜 즉시함수에 넣었는지잘 이해가안됩니다ㅠㅠ
+
+
+ ////try{}catch{}  오류가뜨면 catch가 실행됨. try{ 이걸해보고 에러나면 } catch{ 이거 실행해주세요 }
+ //그래서위에reject를 지움. throw로 바굼.
+
+    </script>
+</body>
+
+</html>

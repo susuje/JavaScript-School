@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 1분만에 추가해보기!</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script> 
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>내 html에 리액트 1분만에 추가해보기!</h1>
+    <p>단 1분만에 설치없이 리액트를 추가할 수 있다구요?</p>
+    <div id="root"></div>
+    <!-- babel은 통역기처럼생각하면된다. -->
+    <script type="text/babel">
+      //text/babel 이라고 해야 바벨이 코드를해석함. 꼭넣어주세요
+
+        // react 컴포넌트 정의하기
+        const el = React.createElement;
+                           //리액트 컴포먼트로부터 상속
+        class HelloButton extends React.Component { //클래스형 컴포넌트
+          constructor(props) {
+              super(props); //리액트 컴포먼트안에잇는 프로퍼티를 상속받습니다.
+
+              this.state = { liked: false };
+          }
+
+          render() {
+              if (this.state.liked) {
+                  return 'Hello World!';
+              }
+
+              return (                     //this는 HelloButton
+                <button onClick={() => this.setState({ liked: true })}>
+                    Hello
+                </button>
+            );
+          }
+        }
+        //컴포넌트란 웹페이지 ui를 구성하는 가장작은단위 ex. nav,검색창.. 리액트로 컴포넌트를만들자.
+        // DOM에 리액트 컴포넌트 랜더링하기
+        const domContainer = document.querySelector('#root');
+        ReactDOM.render(el(HelloButton), domContainer);
+    </script>
+  </body>
+</html>
