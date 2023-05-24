@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class UltraArray {
+    constructor(){
+        this.data= {}; //인스턴스의 프로퍼티 생성
+        this.length=0;
+    }
+    push(item){
+        //obj.1 = 'hi' 이런식으루 못함 .1을 소수점으로 인식해서
+        //obj[0] 이러케
+        this.data[this.length] = item; //{0:item} // {0:item,1:item,2:item}  유사배열객체
+        this.length +=1; //++
+        //push하면 보통배열의 length값 반환하므로 우리도 반환하자.
+        return this.length
+    }
+    pop(){
+        const lastState = this.data[this.length-1]
+        delete this.data[this.length-1];
+        this.length -=1; //--
+        return lastState
+    }
+    
+    //인덱스 숫자로 속성을 제거합니다
+    deleteWithIndex(index){
+        const removedItem = this.data[index]
+        //delete this.data[index]
+        this.changeOrderOfItems(index);
+        return removedItem
+    }
+    //인덱스를 정리하고 속성을 제거한다
+    changeOrderOfItems(index){
+        
+        //받아오는 index부터 시작해 정리를 한다.
+        this.length -=1
+        for(let i=index; i<this.length; i++){
+            //뒤에잇는 인덱스를 앞으로 당겨야한다.
+            //만약 [1]번째 삭제시 [0,1,2] ==>[0,2] 
+            this.data[i] = this.data[i+1]
+        }
+        //대상을 제거한다.
+        
+        delete this.data[this.length];
+         //--
+    }
+}
+
+const myArray = new UltraArray();
+
+myArray.push(1);
+myArray.push(2);
+myArray.push(3);
+    </script>
+</body>
+</html>
